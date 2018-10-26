@@ -152,7 +152,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Customers.cs" />
     <Compile Include="ViewModels\Persons.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,10 +199,10 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Shared\_Partial.cshtml" />
     <Content Include="Views\Main\ListPersons.cshtml" />
+    <Content Include="Views\Main\CreateCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
