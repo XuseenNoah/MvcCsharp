@@ -200,6 +200,7 @@
     <Content Include="Views\Shared\_Partial.cshtml" />
     <Content Include="Views\Main\ListPersons.cshtml" />
     <Content Include="Views\Main\CreateCustomer.cshtml" />
+    <Content Include="Views\Main\ListCustomers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

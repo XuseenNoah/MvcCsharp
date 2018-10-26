@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MvcCsharp.ViewModels
 {
@@ -15,6 +16,7 @@ namespace MvcCsharp.ViewModels
         public string CustomerAddres { get; set; }
         [Required, Display(Name = "Customer Phone")]
         public string CustomerPhone { get; set; }
+        [Required,EmailAddress]
         public string Email { get; set; }
         public DateTime Date { get; set; }
     }

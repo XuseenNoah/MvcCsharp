@@ -12,19 +12,19 @@ namespace MvcCsharp.Controllers
     {
         // GET: Main
         Repository _repository = new Repository();
-        public ActionResult Index(string id)
-        {
-            //var person = new Persons();
-            //var listPerons = person.GetListpersons();
-            return View();
-            //return PartialView("_Partial");
-            //return Json();
-            //var content = "Id=" + id;
+        //public ActionResult Index(string id)
+        //{
+        //    //var person = new Persons();
+        //    //var listPerons = person.GetListpersons();
+        //    return View();
+        //    //return PartialView("_Partial");
+        //    //return Json();
+        //    //var content = "Id=" + id;
             
-          //  return Content(content);
-            //return View();
-            //return HttpNotFound();
-        }
+        //  //  return Content(content);
+        //    //return View();
+        //    //return HttpNotFound();
+        //}
 
         public ActionResult CreateCustomer()
         {
@@ -35,9 +35,17 @@ namespace MvcCsharp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.CreateCustomer(customer);
-                TempData["SuccesfullySaved"] = "Succesfully Saved Record";
-                return RedirectToAction("CreateCustomer");
+                var getPhoneExist = _repository.GetCustomerPhone(customer.CustomerPhone);
+                if (getPhoneExist == null)
+                {
+                    _repository.CreateCustomer(customer);
+                    TempData["SuccesfullySaved"] = "Succesfully Saved Record";
+                    return RedirectToAction("ListCustomers");
+                }
+                else
+                {
+                    TempData["PHoneExist"] = "Your phone is exist try to use another phone number";
+                }
             }
             return View();
         }
@@ -47,6 +55,12 @@ namespace MvcCsharp.Controllers
             var person = new Persons();
             var listPerons = person.GetListpersons();
             return View(listPerons);
+        }
+        
+        public ActionResult ListCustomers(string customerName)
+        {
+            var listCustomers = _repository.ListPersons(customerName);
+            return View(listCustomers);
         }
     }
 }
